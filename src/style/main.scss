@@ -1,0 +1,121 @@
+html {
+    font-size: 62.5%; // 1rem is 10px
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    font-family: 'montserrat';
+}
+
+body {
+    overflow-x: hidden;
+    font-weight: normal;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.layout {
+    height: 100vh;
+    width: 100vw;
+
+    display: grid;
+    grid-template-rows: 20px [title-s] 80px [title-e add-s] 40px [add-e todos-s] 600px [todos-e];
+    grid-template-columns: 140px [s] 1fr [e] 140px;
+
+    grid-gap: 20px;
+
+    & > * {
+        grid-column: s/e;
+    }
+
+    &__title {
+        background: gray;
+        grid-row: title-s/title-e;
+    }
+    &__add-todo {
+        grid-row: add-s/add-e;
+        background: rgb(255, 202, 213);
+        grid-gap: 20px;
+
+        // input,
+        // button {
+        //     height: 40px;
+        //     font-size: 24px;
+        // }
+        // input {
+        //     width: 50%;
+        //     margin-right: 40px;
+        // }
+        // button { 
+        //     width: 130px;
+        // }
+    }
+
+    &__todos {
+        grid-row: todos-s/todos-e;
+        background: ghostwhite;
+        padding: 24px;
+    }
+
+    background: rgb(196, 238, 254);
+}
+
+
+.add-todo {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
+
+    input {
+        grid-column: 1/2;
+    }
+    button {
+        grid-column: 2/3;
+    }
+}
+
+.todos {
+    overflow-y: scroll;
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    // grid-template-rows: rep
+    // justify-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-gap: 20px;
+    
+}
+
+.todos__todo {
+    box-shadow: 0px 0px 2px 2px rgba(28, 28, 28, 0.296);
+    width: 200px;
+    height: 140px;
+
+    display: grid;
+    align-items: center;
+    justify-items: center;
+
+    h5 {
+        text-align: center;
+        font-size: 38px;
+    }
+    button {
+        width: 80%;
+        font-size: 24px;
+        transition: all .2s ease;
+        &:hover {
+            transform: scale(1.015);
+        }
+        &:active {
+            transform: scale(0.985);
+        }
+    }
+}
